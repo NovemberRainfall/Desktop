@@ -167,8 +167,7 @@ function DesktopApp.Button(prop)
     Button.Parent = prop.Parent or nil
 
     local UICorner2 = Instance.new("UICorner", Button)
-    UICorner2.CornerRadius = UDim.new(0, 4)
-    UICorner2.Enabled = prop.UICorner or true
+    UICorner2.CornerRadius = prop.Corner or UDim2.new(0,4)
 
     local UIStroke2 = Instance.new("UIStroke", Button)
     UIStroke2.Transparency = 0.7
@@ -203,8 +202,7 @@ function DesktopApp.Textbox(prop)
     UIStroke3.Enabled = prop.UIStroke or true
 
     local UICorner3 = Instance.new("UICorner", Textbox)
-    UICorner3.CornerRadius = UDim.new(0, 4)
-    UICorner3.Enabled = prop.UICorner or true
+    UICorner3.CornerRadius = prop.Corner or UDim2.new(0,4)
     return {Textbox}
 end
 
