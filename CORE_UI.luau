@@ -153,7 +153,7 @@ function DesktopApp.Icon(id)
 end
 
 function DesktopApp.Button(prop)
-    local Button = Instance.new("TextButton", MainUI)
+    local Button = Instance.new("TextButton")
     Button.TextWrapped = prop.TextWrapped or true
     Button.BorderSizePixel = 0
     Button.TextSize = prop.TextSize or 14
@@ -164,6 +164,7 @@ function DesktopApp.Button(prop)
     Button.Text = prop.Text or "Button"
     Button.Name = prop.Name or "Button"
     Button.Position = prop.Position or UDim2.new(0,0,0,0)
+    Button.Parent = prop.Parent or nil
 
     local UICorner2 = Instance.new("UICorner", Button)
     UICorner2.CornerRadius = UDim.new(0, 4)
@@ -177,7 +178,7 @@ function DesktopApp.Button(prop)
 end
 
 function DesktopApp.Textbox(prop)
-    local Textbox = Instance.new("TextBox", MainUI)
+    local Textbox = Instance.new("TextBox")
     Textbox.Name = prop.Name or "Textbox"
     Textbox.TextXAlignment = Enum.TextXAlignment.Left
     Textbox.BorderSizePixel = 0
@@ -193,6 +194,7 @@ function DesktopApp.Textbox(prop)
     Textbox.Size = prop.Size or UDim2.new(0, 202, 0, 58)
     Textbox.Position = prop.Position or UDim2.new(0, 0, 0, 0)
     Textbox.Text = prop.Text or ""
+    Textbox.Parent = prop.Parent or nil
 
     local UIStroke3 = Instance.new("UIStroke", Textbox)
     UIStroke3.Transparency = 0.7
