@@ -208,4 +208,4 @@ function DesktopApp.Textbox(prop)
     return {Textbox}
 end
 
-return {DesktopApp = DesktopApp, MainUI = MainUI}
+return {DesktopApp, MainUI}
