@@ -132,10 +132,10 @@ UIStroke5.Color = Color3.fromRGB(72, 72, 72)
 
 
 MinimizeUI.MouseButton1Click:Connect(function()
-    CanvasGroup.Visible = false; AppImageIcon.Visible = true; end)
+    CanvasGroup.Visible = false; ImageButton.Visible = true; end)
 
-AppImageIcon.MouseButton1Click:Connect(function()
-    CanvasGroup.Visible = true; AppImageIcon.Visible = false; end)
+ImageButton.MouseButton1Click:Connect(function()
+    CanvasGroup.Visible = true; ImageButton.Visible = false; end)
 
 CloseUI.MouseButton1Click:Connect(function()
     ScreenGui:Destroy(); end)
