@@ -92,7 +92,6 @@ AppImageIcon.BackgroundTransparency = 1
 AppImageIcon.Name = [[AppImageIcon]]
 AppImageIcon.Position = UDim2.new(0, 4, 0, 4)
 AppImageIcon.Draggable = true
-AppImageIcon.Visible = false
 
 local AppName = Instance.new("TextLabel", Topbar)
 AppName.BorderSizePixel = 0
@@ -115,6 +114,7 @@ ImageButton.AutoButtonColor = false
 ImageButton.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 ImageButton.Size = UDim2.new(0, 60, 0, 60)
 ImageButton.Position = UDim2.new(0, 72, 0, 28)
+ImageButton.Visible = false
 
 local UICorner4 = Instance.new("UICorner", ImageButton)
 
