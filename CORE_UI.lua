@@ -123,8 +123,7 @@ ImageButton.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 ImageButton.Size = UDim2.new(0, 60, 0, 60)
 ImageButton.Position = UDim2.new(0, 72, 0, 28)
 ImageButton.Visible = false
-local _FT = ImageButton
-_FT.Draggable = true -- UIDragDetector will broke something
+ImageButton.Draggable = true -- UIDragDetector will broke mousebutton1click
 
 local UICorner4 = Instance.new("UICorner", ImageButton)
 
@@ -181,8 +180,8 @@ end
 
 function DesktopApp.Icon(id)
     local image = id or "73586387178052"
-    AppImageIcon.Image = "rbxassetid://"..id
-    ImageButton.Image = "rbxassetid://"..id
+    AppImageIcon.Image = "rbxassetid://".. image
+    ImageButton.Image = "rbxassetid://".. image
 end
 
 return {DesktopApp, MainUI}
