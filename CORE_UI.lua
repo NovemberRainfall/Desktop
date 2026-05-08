@@ -1,15 +1,16 @@
 local DesktopApp = {}
+local RGB = Color3.fromRGB; local _D2 = UDim2.new
 
 
-local ScreenGui = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.Name = "App"
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; ScreenGui.Name = "App"; ScreenGui.Parent = game.CoreGui
 
 local CanvasGroup = Instance.new("CanvasGroup", ScreenGui)
 CanvasGroup.BorderSizePixel = 0
 CanvasGroup.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 CanvasGroup.Size = UDim2.new(0, 386, 0, 338)
 CanvasGroup.Position = UDim2.new(0, 190, 0, 90)
+local CUI = CanvasGroup
 
 local UICorner = Instance.new("UICorner", CanvasGroup)
 UICorner.CornerRadius = UDim.new(0, 6)
@@ -20,6 +21,7 @@ MainUI.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
 MainUI.Size = UDim2.new(1, 0, 1, -30)
 MainUI.Position = UDim2.new(0, 0, 0, 30)
 MainUI.Name = [[MainUI]]
+local UI = MainUI
 
 local DropShadow1 = Instance.new("UIStroke", CanvasGroup)
 DropShadow1.Transparency = 0.9
@@ -140,70 +142,25 @@ ImageButton.MouseButton1Click:Connect(function()
 CloseUI.MouseButton1Click:Connect(function()
     ScreenGui:Destroy(); end)
 
---[[=================================================]]
-
+function DesktopApp.Interface(Properties)
+    CUI.Size = Properties.Size or _D2(0,300,0,300); CUI.Position = Properties.Position or _D2(0,20,0,50)
+    UI.BackgroundColor3 = Properties.UIColor or RGB(37,37,37);
+    -- outline shadow
+    local disable_Shadow = Properties.NoShadow or false
+    if Enable_Shadow then
+        DropShadow1.Enabled = false
+        DropShadow2.Enabled = false
+    end
+    Topbar.BackgroundColor3 = Properties.TopbarColor or RGB(51,51,51)
+end
 
 function DesktopApp.Name(text)
-    AppName.Text = text or "App"
+    AppName.Text = text or "Windows Apps"
 end
 
 function DesktopApp.Icon(id)
     AppImageIcon = id or nil
     ImageButton = id or nil
-end
-
-function DesktopApp.Button(prop)
-    local Button = Instance.new("TextButton")
-    Button.TextWrapped = prop.TextWrapped or true
-    Button.BorderSizePixel = 0
-    Button.TextSize = prop.TextSize or 14
-    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Button.BackgroundColor3 = Color3.fromRGB(46, 46, 46)
-    Button.FontFace = Font.new([[rbxasset://fonts/families/Roboto.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    Button.Size = prop.Size or UDim2.new(0, 32, 0, 32)
-    Button.Text = prop.Text or "Button"
-    Button.Name = prop.Name or "Button"
-    Button.Position = prop.Position or UDim2.new(0,0,0,0)
-    Button.Parent = prop.Parent or nil
-
-    local UICorner2 = Instance.new("UICorner", Button)
-    UICorner2.CornerRadius = prop.Corner or UDim2.new(0,4)
-
-    local UIStroke2 = Instance.new("UIStroke", Button)
-    UIStroke2.Transparency = 0.7
-    UIStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    UIStroke2.Enabled = prop.UIStroke or true
-    return {Button}
-end
-
-function DesktopApp.Textbox(prop)
-    local Textbox = Instance.new("TextBox")
-    Textbox.Name = prop.Name or "Textbox"
-    Textbox.TextXAlignment = Enum.TextXAlignment.Left
-    Textbox.BorderSizePixel = 0
-    Textbox.TextWrapped = prop.TextWrapped or true
-    Textbox.TextSize = prop.TextSize or 14
-    Textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Textbox.TextYAlignment = Enum.TextYAlignment.Top
-    Textbox.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
-    Textbox.Font = prop.Font or "BuilderSans"
-    Textbox.MultiLine = prop.MultiLine or true
-    Textbox.ClearTextOnFocus = prop.ClearTextOnFocus or false
-    Textbox.PlaceholderText = prop.Placeholder or ""
-    Textbox.Size = prop.Size or UDim2.new(0, 202, 0, 58)
-    Textbox.Position = prop.Position or UDim2.new(0, 0, 0, 0)
-    Textbox.Text = prop.Text or ""
-    Textbox.Parent = prop.Parent or nil
-
-    local UIStroke3 = Instance.new("UIStroke", Textbox)
-    UIStroke3.Transparency = 0.7
-    UIStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    UIStroke3.Color = Color3.fromRGB(61, 61, 61)
-    UIStroke3.Enabled = prop.UIStroke or true
-
-    local UICorner3 = Instance.new("UICorner", Textbox)
-    UICorner3.CornerRadius = prop.Corner or UDim2.new(0,4)
-    return {Textbox}
 end
 
 return {DesktopApp, MainUI}
