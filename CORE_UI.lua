@@ -1,5 +1,9 @@
 local DesktopApp = {}
 local RGB = Color3.fromRGB; local _D2 = UDim2.new
+--[[
+    [1] = DesktopApp
+    [2] = UI
+]]
 
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -71,6 +75,7 @@ CloseUI.Text = [[<b>╳</b>]]
 CloseUI.Name = [[CloseUI]]
 CloseUI.Position = UDim2.new(1, -26, 0, 6)
 
+-- currently does nothing
 local MaxUI = Instance.new("TextButton", Topbar)
 MaxUI.TextWrapped = true
 MaxUI.RichText = true
@@ -107,6 +112,7 @@ AppName.Size = UDim2.new(1, -120, 0, 24)
 AppName.Text = [[Windows Library]]
 AppName.Name = [[AppName]]
 AppName.Position = UDim2.new(0, 34, 0, 2)
+AppName.RichText = true
 
 local UIDragDetector = Instance.new("UIDragDetector", CanvasGroup)
 
@@ -117,6 +123,8 @@ ImageButton.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 ImageButton.Size = UDim2.new(0, 60, 0, 60)
 ImageButton.Position = UDim2.new(0, 72, 0, 28)
 ImageButton.Visible = false
+local _FT = ImageButton
+_FT.Draggable = true
 
 local UICorner4 = Instance.new("UICorner", ImageButton)
 
@@ -144,14 +152,27 @@ CloseUI.MouseButton1Click:Connect(function()
 
 function DesktopApp.Interface(Properties)
     CUI.Size = Properties.Size or _D2(0,300,0,300); CUI.Position = Properties.Position or _D2(0,20,0,50)
-    UI.BackgroundColor3 = Properties.UIColor or RGB(37,37,37);
     -- outline shadow
     local disable_Shadow = Properties.NoShadow or false
     if Enable_Shadow then
         DropShadow1.Enabled = false
         DropShadow2.Enabled = false
     end
-    Topbar.BackgroundColor3 = Properties.TopbarColor or RGB(51,51,51)
+end
+
+function DesktopApp.Color(color)
+    Topbar.BackgroundColor3 = color.Topbar or RGB(51,51,51)
+    AppName.TextColor3 = color.Name or RGB(255,255,255)
+    UI.BackgroundColor3 = color.Background or RGB(37,37,37)
+    MaxUI.TextColor3 = color.MaxButton or RGB(2555,255,255); MinimizeUI.Textcolor3 = color.MinButton or RGB(255,255,255); CloseUI.Textcolor3 = color.CloseButton or RGB(255,255,255)
+end
+
+function DesktopApp.DisableMaxmize(Bool)
+    local _Bool = Bool or false
+    if _Bool then
+        MaxUI.Visible = false
+        MinimizeUI.Position = _D2(1, -58, 0, 6)
+    end
 end
 
 function DesktopApp.Name(text)
@@ -159,8 +180,8 @@ function DesktopApp.Name(text)
 end
 
 function DesktopApp.Icon(id)
-    AppImageIcon = id or nil
-    ImageButton = id or nil
+    AppImageIcon.Image = "rbxassetid://"..id or "rbxassetid://73586387178052"
+    ImageButton.Image = "rbxassetid://"..id or "rbxassetid://73586387178052"
 end
 
 return {DesktopApp, MainUI}
