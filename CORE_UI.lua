@@ -99,6 +99,7 @@ AppImageIcon.BackgroundTransparency = 1
 AppImageIcon.Name = [[AppImageIcon]]
 AppImageIcon.Position = UDim2.new(0, 4, 0, 4)
 AppImageIcon.Draggable = true
+AppImageIcon.Image = "rbxassetid://79168781763218"
 
 local AppName = Instance.new("TextLabel", Topbar)
 AppName.BorderSizePixel = 0
@@ -124,6 +125,7 @@ ImageButton.Size = UDim2.new(0, 60, 0, 60)
 ImageButton.Position = UDim2.new(0, 72, 0, 28)
 ImageButton.Visible = false
 ImageButton.Draggable = true -- UIDragDetector will broke mousebutton1click
+ImageButton.Image = "rbxassetid://79168781763218"
 
 local UICorner4 = Instance.new("UICorner", ImageButton)
 
@@ -179,7 +181,7 @@ function DesktopApp.Name(text)
 end
 
 function DesktopApp.Icon(id)
-    local image = id or "73586387178052"
+    local image = id or "79168781763218"
     AppImageIcon.Image = "rbxassetid://".. image
     ImageButton.Image = "rbxassetid://".. image
 end
