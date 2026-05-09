@@ -31,14 +31,14 @@ local DropShadow1 = Instance.new("UIStroke", CanvasGroup)
 DropShadow1.Transparency = 0.8
 DropShadow1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 DropShadow1.Name = [[DropShadow1]]
-DropShadow1.Thickness = 2.5
+DropShadow1.Thickness = 2.1
 DropShadow1.Color = Color3.fromRGB(30,30,30)
 
 local DropShadow2 = Instance.new("UIStroke", CanvasGroup)
 DropShadow2.Transparency = 0.9
 DropShadow2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 DropShadow2.Name = [[DropShadow2]]
-DropShadow2.Thickness =3.8
+DropShadow2.Thickness =3.2
 DropShadow2.Color = Color3.fromRGB(23,23,23)
 
 local Topbar = Instance.new("Frame", CanvasGroup)
@@ -165,7 +165,7 @@ function DesktopApp.NoShadow(bool)
 end
 
 function DesktopApp.UICorner(T)
-    UICorner.CornerRadius = T or _D2(0,6)
+    UICorner.CornerRadius = T or UDim.new(0,6)
 end
 
 function DesktopApp.Color(color)
