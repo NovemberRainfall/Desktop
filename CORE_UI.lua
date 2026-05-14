@@ -3,6 +3,7 @@ local RGB = Color3.fromRGB; local _D2 = UDim2.new
 --[[
     [1] = DesktopApp
     [2] = UI
+    [3] = ScreenGui
 ]]
 
 
@@ -120,8 +121,8 @@ local UIDragDetector = Instance.new("UIDragDetector", CanvasGroup)
 local ImageButton = Instance.new("ImageButton", ScreenGui)
 ImageButton.BorderSizePixel = 0
 ImageButton.AutoButtonColor = false
-ImageButton.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
-ImageButton.Size = UDim2.new(0, 60, 0, 60)
+ImageButton.BackgroundColor3 = Color3.fromRGB(0,0,0)
+ImageButton.Size = UDim2.new(0, 30, 0, 30)
 ImageButton.Position = UDim2.new(0, 72, 0, 28)
 ImageButton.Visible = false
 ImageButton.Draggable = true -- UIDragDetector will broke mousebutton1click
@@ -152,12 +153,12 @@ CloseUI.MouseButton1Click:Connect(function()
     ScreenGui:Destroy(); end)
 
 function DesktopApp.Interface(Properties)
-    CUI.Size = Properties.Size or _D2(0, 386, 0, 338)
-    CUI.Position = Properties.Position or _D2(0,190,0,90)
+    CUI.Size = Properties.Size
+    CUI.Position = Properties.Position
 end
 
-function DesktopApp.NoShadow(bool)
-    local disable = bool or false
+function DesktopApp.NoShadow(state)
+    local disable = state or false
     if disable then
         DropShadow1.Enabled = false
         DropShadow2.Enabled = false
@@ -165,17 +166,17 @@ function DesktopApp.NoShadow(bool)
 end
 
 function DesktopApp.UICorner(T)
-    UICorner.CornerRadius = T or UDim.new(0,6)
+    UICorner.CornerRadius = UDim.new(T)
 end
 
 function DesktopApp.Color(color)
-    Topbar.BackgroundColor3 = color.Topbar or RGB(51,51,51)
-    AppName.TextColor3 = color.Name or RGB(255,255,255)
-    UI.BackgroundColor3 = color.Background or RGB(37,37,37)
-    MaxUI.TextColor3 = color.MaxButton or RGB(255,255,255);
-    MinimizeUI.TextColor3 = color.MinButton or RGB(255,255,255);
-    CloseUI.TextColor3 = color.CloseButton or RGB(255,255,255)
-    ImageButton.BackgroundColor3 = color.FloatingButton or RGB(29,29,29)
+    Topbar.BackgroundColor3 = color.Topbar
+    AppName.TextColor3 = color.Name 
+    UI.BackgroundColor3 = color.Background 
+    MaxUI.TextColor3 = color.MaxButton 
+    MinimizeUI.TextColor3 = color.MinButton 
+    CloseUI.TextColor3 = color.CloseButton 
+    ImageButton.BackgroundColor3 = color.Icon
 end
 
 function DesktopApp.DisableMaxmize(Bool)
@@ -196,10 +197,10 @@ function DesktopApp.Icon(id)
     ImageButton.Image = "rbxassetid://".. image
 end
 
-function DesktopApp.FButton(FT)
-    ImageButton.Size = FT.Size or _D2(0,60,0,60)
-    ImageButton.Position = FT.Position or _D2(0,78,0,28)
-    UICorner4.CornerRadius = FT.CornerRadius or D2(0,8)
+function DesktopApp.IconButton(FT)
+    ImageButton.Size = UDim2.new(FT.Size)
+    ImageButton.Position = UDim2.new(FT.Position)
+    UICorner4.CornerRadius = UDim.new(FT.Corner)
 end
 
-return {DesktopApp, MainUI}
+return {DesktopApp, MainUI, ScreenGui}
