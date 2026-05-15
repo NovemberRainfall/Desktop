@@ -1,6 +1,13 @@
 local DesktopApp = {}
 local RGB = Color3.fromRGB; local _D2 = UDim2.new
 --[[
+
+• About
+    [V] : NoVersion / -0
+
+[==============================================]
+
+• Library
     [1] = DesktopApp
     [2] = UI
     [3] = ScreenGui
