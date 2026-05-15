@@ -15,14 +15,13 @@ CanvasGroup.BorderSizePixel = 0
 CanvasGroup.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 CanvasGroup.Size = UDim2.new(0, 386, 0, 338)
 CanvasGroup.Position = UDim2.new(0, 190, 0, 90)
-local CUI = CanvasGroup
 
 local UICorner = Instance.new("UICorner", CanvasGroup)
 UICorner.CornerRadius = UDim.new(0, 6)
 
 local MainUI = Instance.new("Frame", CanvasGroup)
 MainUI.BorderSizePixel = 0
-MainUI.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+MainUI.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
 MainUI.Size = UDim2.new(1, 0, 1, -30)
 MainUI.Position = UDim2.new(0, 0, 0, 30)
 MainUI.Name = [[MainUI]]
@@ -44,7 +43,7 @@ DropShadow2.Color = Color3.fromRGB(23,23,23)
 
 local Topbar = Instance.new("Frame", CanvasGroup)
 Topbar.BorderSizePixel = 0
-Topbar.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+Topbar.BackgroundColor3 = Color3.fromRGB(0,0,0)
 Topbar.Size = UDim2.new(1, 0, 0, 30)
 Topbar.Name = [[Topbar]]
 
@@ -111,7 +110,7 @@ AppName.FontFace = Font.new([[rbxasset://fonts/families/Roboto.json]], Enum.Font
 AppName.TextColor3 = Color3.fromRGB(255, 255, 255)
 AppName.BackgroundTransparency = 1
 AppName.Size = UDim2.new(1, -120, 0, 24)
-AppName.Text = [[Windows Library]]
+AppName.Text = ""
 AppName.Name = [[AppName]]
 AppName.Position = UDim2.new(0, 34, 0, 2)
 AppName.RichText = true
@@ -153,8 +152,8 @@ CloseUI.MouseButton1Click:Connect(function()
     ScreenGui:Destroy(); end)
 
 function DesktopApp.GUI(Properties)
-    CUI.Size = Properties.Size
-    CUI.Position = Properties.Position
+    CanvasGroup.Size = Properties.Size or CanvasGroup.Size
+    CanvasGroup.Position = Properties.Position or CanvasGroup.Position
 end
 
 function DesktopApp.NoShadow(state)
@@ -166,17 +165,18 @@ function DesktopApp.NoShadow(state)
 end
 
 function DesktopApp.UICorner(S)
-    UICorner.CornerRadius = S
+    UICorner.CornerRadius = S or UICorner.CornerRadius
 end
 
 function DesktopApp.Color(color)
-    Topbar.BackgroundColor3 = color.Topbar
-    AppName.TextColor3 = color.Name 
-    MainUI.BackgroundColor3 = color.Background
-    MaxUI.TextColor3 = color.MaxButton 
-    MinimizeUI.TextColor3 = color.MinButton 
-    CloseUI.TextColor3 = color.CloseButton 
-    ImageButton.BackgroundColor3 = color.Icon
+    if not color then return end 
+    Topbar.BackgroundColor3 = color.Topbar or Topbar.BackgroundColor3
+    AppName.TextColor3 = color.Name or AppName.TextColor3
+    MainUI.BackgroundColor3 = color.Background or MainUI.BackgroundColor3
+    MaxUI.TextColor3 = color.MaxButton or MaxUI.TextColor3
+    MinimizeUI.TextColor3 = color.MinButton or MinimizeUI.TextColor3
+    CloseUI.TextColor3 = color.CloseButton or CloseUI.TextColor3
+    ImageButton.BackgroundColor3 = color.Icon or ImageButton.BackgroundColor3
 end
 
 function DesktopApp.DisableMaxmize(Bool)
@@ -198,9 +198,9 @@ function DesktopApp.Icon(id)
 end
 
 function DesktopApp.IconButton(FT)
-    ImageButton.Size = FT.Size
-    ImageButton.Position = FT.Position
-    UICorner4.CornerRadius = FT.Corner
+    ImageButton.Size = FT.Size or ImageButton.Size
+    ImageButton.Position = FT.Position or ImageButton.Position
+    UICorner4.CornerRadius = FT.Corner or UICorner4.CornerRadius
 end
 
 return {DesktopApp, MainUI, ScreenGui}
