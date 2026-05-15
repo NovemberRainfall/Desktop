@@ -131,13 +131,13 @@ ImageButton.Image = "rbxassetid://79168781763218"
 local UICorner4 = Instance.new("UICorner", ImageButton)
 
 local UIStroke4 = Instance.new("UIStroke", ImageButton)
-UIStroke4.Transparency = 0.85
+UIStroke4.Transparency = 0.88
 UIStroke4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 UIStroke4.Thickness = 1.5
 UIStroke4.Color = Color3.fromRGB(53, 53, 53)
 
 local UIStroke5 = Instance.new("UIStroke", ImageButton)
-UIStroke5.Transparency = 0.95
+UIStroke5.Transparency = 0.97
 UIStroke5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 UIStroke5.Thickness = 2.5
 UIStroke5.Color = Color3.fromRGB(72, 72, 72)
@@ -165,8 +165,8 @@ function DesktopApp.NoShadow(state)
     end
 end
 
-function DesktopApp.UICorner(T)
-    UICorner.CornerRadius = UDim.new(T)
+function DesktopApp.UICorner(S,O)
+    UICorner.CornerRadius = UDim.new(S,O)
 end
 
 function DesktopApp.Color(color)
