@@ -152,7 +152,7 @@ ImageButton.MouseButton1Click:Connect(function()
 CloseUI.MouseButton1Click:Connect(function()
     ScreenGui:Destroy(); end)
 
-function DesktopApp.Interface(Properties)
+function DesktopApp.GUI(Properties)
     CUI.Size = Properties.Size
     CUI.Position = Properties.Position
 end
@@ -198,9 +198,9 @@ function DesktopApp.Icon(id)
 end
 
 function DesktopApp.IconButton(FT)
-    ImageButton.Size = UDim2.new(FT.Size)
-    ImageButton.Position = UDim2.new(FT.Position)
-    UICorner4.CornerRadius = UDim.new(FT.Corner)
+    ImageButton.Size = FT.Size
+    ImageButton.Position = FT.Position
+    UICorner4.CornerRadius = FT.Corner
 end
 
 return {DesktopApp, MainUI, ScreenGui}
