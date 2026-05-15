@@ -165,8 +165,8 @@ function DesktopApp.NoShadow(state)
     end
 end
 
-function DesktopApp.UICorner(S,O)
-    UICorner.CornerRadius = UDim.new(S,O)
+function DesktopApp.UICorner(S)
+    UICorner.CornerRadius = S
 end
 
 function DesktopApp.Color(color)
