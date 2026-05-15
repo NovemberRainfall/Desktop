@@ -172,7 +172,7 @@ end
 function DesktopApp.Color(color)
     Topbar.BackgroundColor3 = color.Topbar
     AppName.TextColor3 = color.Name 
-    UI.BackgroundColor3 = color.Background 
+    MainUI.BackgroundColor3 = color.Background
     MaxUI.TextColor3 = color.MaxButton 
     MinimizeUI.TextColor3 = color.MinButton 
     CloseUI.TextColor3 = color.CloseButton 
